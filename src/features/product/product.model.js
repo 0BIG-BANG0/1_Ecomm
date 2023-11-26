@@ -8,6 +8,13 @@ export default class ProductModel {
     this.category = category;
     this.sizes = sizes;
   }
+
+  static add(product){
+    products.id = products.length + 1;
+    products.push(product);
+    return product;
+  }
+
   static GetAll(){
     return products;
   }
