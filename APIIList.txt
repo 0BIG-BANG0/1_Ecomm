@@ -1,6 +1,14 @@
 Products
 Get Products - Done
 Add a Products - Done
-Get one Products ,filterProducts - Done
+Get one Products ,filterProducts - Done in main 2
  
 Rate a Product.
+Add items to Cart
+Get items of cart
+Removing items from Cart.
+
+
+UserController
+SignUp - Email, Name, Password, TypeOfUser(customer, seller)
+SignIn - (Email, Password)

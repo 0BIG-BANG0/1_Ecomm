@@ -20,7 +20,7 @@ export default class ProductModel {
     return product;
   }
 
-  static gettAll() {
+  static getAll() {
     return products;
   }
 
@@ -31,8 +31,8 @@ export default class ProductModel {
     const result = products.filter((product) =>{
         return (
             product.price >= minPrice &&
-            product.price <= maxPrice &&
-            product.category == category
+            product.price <= maxPrice 
+            // product.category == category
             
         );
         
