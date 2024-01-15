@@ -10,5 +10,5 @@ Removing items from Cart.
 
 
 UserController
-SignUp - Email, Name, Password, TypeOfUser(customer, seller)
-SignIn - (Email, Password)
+SignUp - Email, Name, Password, TypeOfUser(customer, seller) - Done in main2 
+SignIn - (Email, Password) - Done in main2

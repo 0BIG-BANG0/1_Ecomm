@@ -20,6 +20,7 @@ export class UserController {
   }
 
   signIn(req, res) {
+      console.log(req.body.email)
     const result = UserModel.signIn(
         req.body.email,
         req.body.password

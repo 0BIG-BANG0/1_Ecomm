@@ -1,0 +1,15 @@
+{"level":"info","message":"/api/cartItems - {}","service":"request-logging"}
+{"level":"info","message":"/api/products/rate?productID=10&userID=1&rating=5&A - {}","service":"request-logging"}
+{"level":"info","message":"/api/products/rate?productID=1&userID=1&rating=5&A - {}","service":"request-logging"}
+{"level":"info","message":"/api/products/rate?productID=1&userID=1&rating=3&A - {}","service":"request-logging"}
+{"level":"info","message":"/api/products/rate?productID=1&userID=1&rating=4&A - {}","service":"request-logging"}
+{"level":"info","message":"/api/products/rate?productID=1&userID=1&rating=4&A - {}","service":"request-logging"}
+{"level":"info","message":"/api/products/rate?productID=1&userID=16&rating=4&A - {}","service":"request-logging"}
+{"level":"info","message":"/api/products/rate?productID=1&userID=16&rating=4&A - {}","service":"request-logging"}
+{"level":"info","message":"/api/products/rate?productID=1&userID=16&rating=4&A - {}","service":"request-logging"}
+{"level":"info","message":"/api/products/rate?productID=1&userID=16&rating=4&A - {}","service":"request-logging"}
+{"level":"info","message":"/api/products/rate?productID=1&userID=16&rating=4&A - {}","service":"request-logging"}
+{"level":"info","message":"/api/products/rate?productID=1&userID=16&rating=4&A - {}","service":"request-logging"}
+{"level":"info","message":"/api/products/rate?productID=1&userID=16&rating=4&A - {}","service":"request-logging"}
+{"level":"info","message":"/api/products/rate?productID=1&userID=16&rating=4&A - {}","service":"request-logging"}
+{"level":"info","message":"/api/products/rate?productID=1&userID=16&rating=4&A - {}","service":"request-logging"}
