@@ -1,0 +1,12 @@
+Place Order.
+
+1. Get cart items of user, calculate the totalAmount.
+2. Create a record for order.
+3. Reduce the stock(products quantity).
+4. Clear the cart.
+
+// To perform all the above 4 operation we have transaction in mongodb   ChatGPT : https://chat.openai.com/share/1656ff3d-7b2c-40c3-b531-6c7cedb0d5a5
+
+5.Deduct the payment.
+6.Inform to sellers.
+7. Inform to coureir.

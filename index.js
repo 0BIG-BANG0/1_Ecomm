@@ -1,3 +1,4 @@
+import './env.js'
 //1.Import Express
 import express from "express";
 
@@ -5,18 +6,24 @@ import cors from 'cors';
 import bodyParser from 'body-parser'
 import swagger from 'swagger-ui-express'
 
+
 import productRouter from "./src/features/product/product.routes.js";
 import userRouter from "./src/features/user/user.routes.js";
 
 import jwtAuth from "./src/middlewares/jwt.middleware.js";
 import cartRouter from "./src/features/cart/cartItems.routes.js";
-import apiDocs from "./swagger.json" assert {type:'json'}
+import apiDocs from "./swagger.json" assert {type: 'json'}
 import loggerMiddleware from "./src/middlewares/logger.middleware.js";
 import { ApplicationError } from "./src/error-handler/applicationError.js";
+import orderRouter from './src/features/order/order.routes.js';
+import mongoose from 'mongoose';
+import likeRouter from './src/features/like/like.route.js';
 
 
 //2.Create Server
 const app = express();
+
+
 
 //cors policy configuration
 var corsOptions = {
@@ -42,23 +49,31 @@ app.use(bodyParser.json())
 //for all req related to product/users , rediect to product/users routes.
 
 // localhost:3200/api/products
-app.use('/api-docs',swagger.serve,swagger.setup(apiDocs));
+app.use('/api-docs', swagger.serve, swagger.setup(apiDocs));
+
 app.use(loggerMiddleware)
-app.use("/api/products", jwtAuth,  productRouter)
+
+app.use('/api/orders', jwtAuth, orderRouter);
+
+app.use("/api/products", jwtAuth, productRouter)
 // localhost:3200/api/products
 app.use("/api/users", userRouter);
 
-app.use("/api/cartItems",jwtAuth,loggerMiddleware, cartRouter);
+app.use("/api/cartItems", jwtAuth, loggerMiddleware, cartRouter);
 
+app.use('/api/likes', jwtAuth, likeRouter)
 // 3.Default req Handlers
 app.get('/', (req, res) => {
     res.send("Welcome to Ecomm API");
 })
 
 //Error handler middleware
-app.use((err, req, res, next)=>{
+app.use((err, req, res, next) => {
     console.log(err);
-    if(err instanceof ApplicationError){
+    if(err instanceof mongoose.Error.ValidationError){
+        return res.status(400).send(err.message);
+    }
+    if (err instanceof ApplicationError) {
         res.status(err.code).send(err.message);
     }
     //server error
@@ -66,7 +81,7 @@ app.use((err, req, res, next)=>{
 })
 
 // 4.Middleware to handle 404 requests.
-app.use((req, res)=>{
+app.use((req, res) => {
     res.status(404).send("API not found. Please check our documentation for more information at localhost:3700/api-docs")
 })
 

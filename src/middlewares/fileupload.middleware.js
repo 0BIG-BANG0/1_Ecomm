@@ -10,7 +10,7 @@ const storage = multer.diskStorage({
     cb(null, "./uploads/");
   },
   filename: (req, file, cb) => {
-    cb(null, new Date().toISOString().replace(/:/g,'_') + file.originalname); // Set the file name
+    cb(null, new Date().toISOString().replace(/:/g, '_') + file.originalname); // Set the file name
   },
 });
 //3. Configure Storage

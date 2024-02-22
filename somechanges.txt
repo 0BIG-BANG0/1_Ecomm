@@ -1,0 +1,41 @@
+ Product Repo when using only MongoDb without Mongoose
+
+ async rate(userID, productID, rating) {
+        try {
+            const db = getDB();
+            const collection = db.collection(this.collection);
+            
+            //1. Removes existing entry
+            await collection.updateOne({
+                _id:new ObjectId(productID)
+            },
+            {
+                $pull:{ratings:{userID: new ObjectId(userID)}}
+            })
+
+            //2. Add new Entry
+            await collection.updateOne({
+                _id: new ObjectId(productID)
+            }, {
+                $push: { ratings: { userID: new ObjectId(userID), rating } }
+            })
+
+        } catch (err) {
+            console.log(err)
+            throw new ApplicationError("Something went wrong with the database", 500)
+        }
+
+
+        Product Repo old add mongodb code
+        
+        async add(newProduct) {
+    try {
+      //1. Get the db
+      const db = getDB();
+      const collection = db.collection(this.collection);
+      return await collection.insertOne(newProduct);
+    } catch (err) {
+      console.log(err);
+      throw new ApplicationError("Something went wrong with the database", 500);
+    }
+  }

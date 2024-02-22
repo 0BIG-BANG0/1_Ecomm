@@ -1,14 +1,13 @@
 import UserModel from "../features/user/user.model.js";
 
-const basicAuthorizer = (req, res, next)=>{
+const basicAuthorizer = (req, res, next) => {
 
     //1. Check if authorization header is empty.
 
     const authHeader = req.headers["authorization"];
 
-    if(!authHeader){
-        return res.status(401).send("No authorization details found");
-    }
+    if (!authHeader) return res.status(401).send("No authorization details found");
+
     console.log(authHeader)
 
     //2. Extract credentials. [Basic qwertyuiop234567cvbnm]
@@ -22,10 +21,10 @@ const basicAuthorizer = (req, res, next)=>{
     console.log(decodedCreds); //[username:password]
     const creds = decodedCreds.split(':');
 
-    const user = UserModel.getAll().find( u=> u.email==creds[0] && u.password==creds[1]);
-    if(user){
+    const user = UserModel.getAll().find(u => u.email == creds[0] && u.password == creds[1]);
+    if (user) {
         next();
-    }else{
+    } else {
         return res.status(401).send("Incorrect Credentials")
     }
 }
